@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Player_1 = require("./Player");
+var Agent_1 = require("./Agent");
+var player = new Player_1.Player('Jack');
+var agent = new Agent_1.Agent('Bigin');
+player.introduce();
+console.log("------------------");
+player.join('Kakao', 10);
+player.introduce();
+console.log("------------------");
+player.leave();
+player.introduce();
+console.log("------------------");
+player.extendContract(5);
+player.introduce();
+console.log("------------------");
+player.managedBy(agent);
+player.introduce();
+console.log("------------------");
+agent.introduce();
+//# sourceMappingURL=Main.js.map
