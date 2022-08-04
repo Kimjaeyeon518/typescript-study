@@ -1,4 +1,5 @@
 import {Agent} from "./Agent";
+import {FreeAgent} from "./FreeAgent";
 
 export class Player {
   get name(): string {
@@ -36,11 +37,12 @@ export class Player {
   /* 이름 */
   private _name: string;
   /* 팀 */
-  private _team: string = 'FA';
+  private _team: string = 'N/A';
   /* 계약기간 */
   private _contractPeriodMonth: number = 0;
   /* 에이전트 */
-  private _agent: Agent | undefined;
+  // @ts-ignore
+  private _agent: Agent = FreeAgent;
 
   constructor(name: string) {
     this._name = name;
@@ -59,7 +61,7 @@ export class Player {
   }
 
   leave(): void {
-    this._team = 'FA';
+    this._team = 'N/A';
   }
 
   extendContract(periodMonth: number): void {
