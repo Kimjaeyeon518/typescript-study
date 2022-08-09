@@ -1,5 +1,7 @@
 import {Agent} from "./Agent";
 import {FreeAgent} from "./FreeAgent";
+import {PlayerBuilder} from "./PlayerBuilder";
+import {Teams} from "./Teams";
 
 export class Player {
   get name(): string {
@@ -10,11 +12,11 @@ export class Player {
     this._name = value;
   }
 
-  get team(): string {
+  get team(): Teams {
     return this._team;
   }
 
-  set team(value: string) {
+  set team(value: Teams) {
     this._team = value;
   }
 
@@ -37,15 +39,15 @@ export class Player {
   /* 이름 */
   private _name: string;
   /* 팀 */
-  private _team: string = 'N/A';
+  private _team: Teams = Teams.NA;
   /* 계약기간 */
   private _contractPeriodMonth: number = 0;
   /* 에이전트 */
   // @ts-ignore
   private _agent: Agent = FreeAgent;
 
-  constructor(name: string) {
-    this._name = name;
+  constructor(builder: PlayerBuilder) {
+    this._name = builder.name;
   }
 
   introduce(): void {
@@ -55,13 +57,13 @@ export class Player {
     console.log(`에이전트: ${this._agent?.name}`);
   }
 
-  join(team: string, contractMonth: number): void {
+  join(team: Teams, contractMonth: number): void {
     this._team = team;
     this._contractPeriodMonth = contractMonth;
   }
 
   leave(): void {
-    this._team = 'N/A';
+    this._team = Teams.NA;
   }
 
   extendContract(periodMonth: number): void {
